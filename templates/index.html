@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot | Powered by Dialogflow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- ================= LANDING PAGE ================= -->
+<div class="landing" id="landing">
+    <div class="landing-bg-shape shape-1"></div>
+    <div class="landing-bg-shape shape-2"></div>
+    <div class="landing-bg-shape shape-3"></div>
+
+    <nav class="landing-nav">
+        <div class="brand">
+            <span class="brand-icon">🤖</span>
+            <span class="brand-name">DialogBot</span>
+        </div>
+        <button id="theme-toggle-landing" class="icon-btn" title="Toggle dark / light mode">🌙</button>
+    </nav>
+
+    <div class="landing-content">
+        <h1>Meet your new <span class="gradient-text">AI Assistant</span></h1>
+        <p class="landing-subtitle">
+            A smart conversational chatbot powered by Google Dialogflow ES —
+            ready to greet you, crack a joke, or help answer your questions, 24/7.
+        </p>
+        <button class="cta-btn" id="open-chat-btn">
+            Start Chatting <span class="arrow">→</span>
+        </button>
+
+        <div class="feature-pills">
+            <span class="pill">💬 Real-time replies</span>
+            <span class="pill">🌗 Dark / Light mode</span>
+            <span class="pill">🎙️ Voice input</span>
+            <span class="pill">📄 Export chat</span>
+        </div>
+    </div>
+</div>
+
+<!-- ================= FLOATING CHAT BUTTON ================= -->
+<button id="floating-chat-btn" class="floating-btn" title="Open chat">
+    <img src="{{ url_for('static', filename='images/chatbot.png') }}" alt="Chatbot" class="floating-icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <span class="floating-emoji" style="display:none;">💬</span>
+    <span class="online-dot"></span>
+</button>
+
+<!-- ================= CHAT WINDOW ================= -->
+<div class="chat-window" id="chat-window">
+    <div class="chat-header">
+        <div class="chat-header-info">
+            <div class="bot-avatar">🤖</div>
+            <div>
+                <h3>DialogBot</h3>
+                <span class="status"><span class="status-dot"></span> <span id="status-text">Online</span></span>
+            </div>
+        </div>
+        <div class="chat-header-actions">
+            <button id="theme-toggle" class="icon-btn" title="Toggle dark / light mode">🌙</button>
+            <button id="export-btn" class="icon-btn" title="Export chat">⬇️</button>
+            <button id="clear-btn" class="icon-btn" title="Clear chat">🗑️</button>
+            <button id="minimize-btn" class="icon-btn" title="Minimize">➖</button>
+        </div>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+        <div class="message bot-message">
+            <div class="avatar">🤖</div>
+            <div class="message-content">
+                <div class="bubble">Hi there! 👋 I'm DialogBot. Ask me anything — try saying "hello" or "tell me a joke"!</div>
+                <span class="timestamp">Just now</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="typing-indicator" id="typing-indicator" style="display:none;">
+        <div class="avatar">🤖</div>
+        <div class="typing-bubble">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div class="chat-input-area">
+        <div class="input-wrapper">
+            <button id="voice-btn" class="icon-btn" title="Voice input">🎙️</button>
+            <input type="text" id="message-input" placeholder="Type your message..." maxlength="500" autocomplete="off">
+            <span id="char-counter" class="char-counter">0/500</span>
+            <button id="emoji-btn" class="icon-btn" title="Emoji">😊</button>
+            <button id="send-btn" class="send-btn" title="Send message">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 21L23 12L2 3V10L17 12L2 14V21Z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+        <div class="emoji-picker" id="emoji-picker" style="display:none;">
+            <span>😀</span><span>😂</span><span>😍</span><span>👍</span><span>🙏</span>
+            <span>🎉</span><span>😢</span><span>😮</span><span>🔥</span><span>❤️</span>
+        </div>
+    </div>
+</div>
+
+<audio id="notification-sound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRhwAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=" type="audio/wav">
+</audio>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
